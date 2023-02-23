@@ -12,3 +12,9 @@ try:
 
 except Exception as exp:
     print(exp.args)   
+
+
+listWithNumbers = [1, 2, 3 ,4, 5, 6]
+print(f"List with all numbers: {listWithNumbers}")
+listWithEvenNumber = [i for i in listWithNumbers if i % 2 == 0]
+print(f"List contains even numbers: {listWithEvenNumber}")
