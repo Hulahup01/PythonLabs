@@ -2,6 +2,22 @@ from collections import Counter
 from .statistics_tools import *
 
 
+def get_statistics(text: str, abbreviations: str = ABBREVIATIONS):
+    amount_of_sentences = get_amount_of_sentences(text, abbreviations)
+    amount_of_non_declarative_sentences = get_amount_of_nondecl_sentences(text, abbreviations)
+    avg_sentence_length = get_avg_sentence_length(text, abbreviations)
+    avg_words_length = get_avg_word_length(text, abbreviations)
+    top_k_n_grams = get_top_k_n_grams(text, abbreviations)
+
+    return {
+        'num_sentences': amount_of_sentences,
+        'num_non_declarative': amount_of_non_declarative_sentences,
+        'avg_sentence_length': avg_sentence_length,
+        'average_word_length' : avg_words_length,
+        'top_k_n_grams' : top_k_n_grams
+    }
+
+
 def get_amount_of_sentences(text: str, abbreviations: str = ABBREVIATIONS):
     """ Get amount of sentences """
     sentences = get_sentences(text, abbreviations)
