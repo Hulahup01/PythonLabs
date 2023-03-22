@@ -5,6 +5,7 @@ from tools.statistics import (
     get_amount_of_nondecl_sentences,
     get_avg_sentence_length,
     get_avg_word_length,
+    get_top_k_n_grams,
 )
 
 
@@ -73,6 +74,22 @@ class TestAverageWordLength(unittest.TestCase):
     def test_many_words_many_letters(self):
         self.assertEqual(get_avg_word_length("abba sus 124912 imp0ster."), 5)
 
+
+class TestTopKNGrams(unittest.TestCase):
+    def test_zero_result(self):
+        self.assertEqual(get_top_k_n_grams(''), [])
+        self.assertEqual(get_top_k_n_grams('1 2 3 4 5 .'), [])
+        self.assertEqual(get_top_k_n_grams('blablabla'), [])
+
+    def test_one_n_gram(self):
+        self.assertEqual(get_top_k_n_grams('a b c d.'), [(('a', 'b', 'c', 'd'), 1)])
+
+    def test_four_n_grams(self):
+        self.assertEqual(
+            get_top_k_n_grams('a b c d a b c d.'),
+            [(('a', 'b', 'c', 'd'), 2), (('b', 'c', 'd', 'a'), 1), (('c', 'd', 'a', 'b'), 1), (('d', 'a', 'b', 'c'), 1)]
+        )
+        
 
 if __name__ == "__main__":
   unittest.main()
