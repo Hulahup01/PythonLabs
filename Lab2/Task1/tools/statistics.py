@@ -24,3 +24,18 @@ def get_avg_sentence_length(text: str, abbreviations: str = ABBREVIATIONS):
         return total_words / len(sentences)
     except ZeroDivisionError:
         return 0
+    
+
+def get_avg_word_length(text: str, abbreviations: str = ABBREVIATIONS):
+    """ Get average length of the word in the text in characters """
+
+    sentences = get_sentences(text, abbreviations)
+    clean_sentences = remove_not_words_and_symbols(sentences)
+    words = get_words(clean_sentences)
+    total_words = len(words)
+    total_len = sum(len(word) for word in words)
+
+    try:
+        return total_len / total_words
+    except ZeroDivisionError:
+        return 0

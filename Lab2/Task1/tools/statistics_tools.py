@@ -34,3 +34,11 @@ def remove_not_words_and_symbols(sentences: list):
         new_sentences.append(re.sub(r'\b\d+\b|[^a-zA-Z0-9 ]', '', sent))
     return new_sentences
 
+
+def get_words(sentences: list):
+    """ Get list of words from senteces """
+    words = []
+    for sent in sentences:
+        words += sent.split()
+    return words
+
