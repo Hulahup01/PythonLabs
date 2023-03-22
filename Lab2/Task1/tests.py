@@ -4,6 +4,7 @@ from tools.statistics import (
     get_amount_of_sentences,
     get_amount_of_nondecl_sentences,
     get_avg_sentence_length,
+    get_avg_word_length,
 )
 
 
@@ -55,6 +56,22 @@ class TestAverageSentenceLength(unittest.TestCase):
         self.assertEqual(get_avg_sentence_length(
             """What determines the fate of humanity in this world?
             Some invisible being or law, like the Hand of the Lord hovering over the world?"""), 52.5)
+
+
+class TestAverageWordLength(unittest.TestCase):
+    def test_zero_result(self):
+        self.assertEqual(get_avg_word_length("  .. . .. !?? !? ? !? ?! "), 0)
+        self.assertEqual(get_avg_word_length(""), 0)
+
+    def test_one_letter(self):
+        self.assertEqual(get_avg_word_length("A."), 1)
+
+    def test_one_word_many_letters(self):
+        self.assertEqual(get_avg_word_length(
+            "WASSAPNIGAGTFOFMYCAR 0_0 IMNOTRACIST."), 11.0)
+
+    def test_many_words_many_letters(self):
+        self.assertEqual(get_avg_word_length("abba sus 124912 imp0ster."), 5)
 
 
 if __name__ == "__main__":
