@@ -3,6 +3,8 @@ from .statistics_tools import *
 
 
 def get_statistics(text: str, abbreviations: str = ABBREVIATIONS):
+    """ Get all statistics of the text """
+
     amount_of_sentences = get_amount_of_sentences(text, abbreviations)
     amount_of_non_declarative_sentences = get_amount_of_nondecl_sentences(text, abbreviations)
     avg_sentence_length = get_avg_sentence_length(text, abbreviations)
