@@ -3,6 +3,7 @@ import unittest
 from tools.statistics import (
     get_amount_of_sentences,
     get_amount_of_nondecl_sentences,
+    get_avg_sentence_length,
 )
 
 
@@ -39,6 +40,21 @@ class TestCountNonDeclarative(unittest.TestCase):
     def test_many_sentences_many_words(self):
         self.assertEqual(get_amount_of_nondecl_sentences("shibidibob, yes, yes! 2134 ! ; ... dob! dob! dob...",), 3)
 
+
+class TestAverageSentenceLength(unittest.TestCase):
+    def test_zero_result(self):
+        self.assertEqual(get_avg_sentence_length(""), 0)
+        self.assertEqual(get_avg_sentence_length(
+            "  .. . . . .. !?? !?? ? !? ! ?! "), 0)
+
+    def test_one_char_long(self):
+        self.assertEqual(get_avg_sentence_length("a...!??!!??!?!"), 1)
+        self.assertEqual(get_avg_sentence_length(" 21321 ! =-=-/ B. 13 "), 1)
+
+    def test_two_sentences_many_words(self):
+        self.assertEqual(get_avg_sentence_length(
+            """What determines the fate of humanity in this world?
+            Some invisible being or law, like the Hand of the Lord hovering over the world?"""), 52.5)
 
 
 if __name__ == "__main__":
