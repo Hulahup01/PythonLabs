@@ -20,3 +20,8 @@ def remove_not_sentences(sentences: list):
         if new_sentences[-1][-1] not in ('.', '?', '!'):
             new_sentences.pop()
     return new_sentences
+
+def is_declarative(sentence: str):
+    """ Checking checking for a declarative sentences"""
+    return sentence.endswith('.') or sentence.endswith('...')
+
