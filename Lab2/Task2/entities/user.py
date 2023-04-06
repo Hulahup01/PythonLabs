@@ -1,4 +1,7 @@
 from .container import Container
+from .validator import Validator
+from constants.console_msg import LOAD_PROMPT
+
 
 class User:
 
@@ -32,15 +35,15 @@ class User:
     def find_keys(self, keys: tuple):
         """ Prints the result of Container find method """
         found = self.container.find(*keys)
-        print(f"Result(find()): {found if found else 'empty'}")
+        print(found if found else 'not_founded')
 
     def list_keys(self):
         """Prints data in list """
-        print(f"Result(list()): {self.container.list()}")
+        print(self.container.list())
 
     def grep_keys(self, regex: str):
         """ Prints the result of Conatainer grep method """
-        print(f"Result(grep(): {self.container.grep(regex)}")
+        print(self.container.grep(regex))
 
     def save_data(self):
         """ Saves data to the file with user's name as a filename """
@@ -50,5 +53,14 @@ class User:
         """ Loads data from the file with user's name as a filename """
         self.container.load(self.username)
 
-    def switch(self):
-        pass
+    def switch(self, new_user: str):
+        """ Switch user """
+        choice: str = Validator.get_choice(LOAD_PROMPT.format(new_user))
+
+        print(f"\nSwitch to user {new_user}")
+        if choice == 'y':
+            self.container.load(new_user, switch=True)
+        elif choice == 'n':
+            self.container.data = set()
+
+        self.username = new_user
