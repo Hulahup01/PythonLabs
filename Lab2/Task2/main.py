@@ -1,4 +1,3 @@
-import sys
 from entities.console import Console
 
 
