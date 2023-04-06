@@ -1,5 +1,4 @@
 import unittest
-
 from tools.statistics import (
     get_amount_of_sentences,
     get_amount_of_nondecl_sentences,
@@ -87,7 +86,10 @@ class TestTopKNGrams(unittest.TestCase):
     def test_four_n_grams(self):
         self.assertEqual(
             get_top_k_n_grams('a b c d a b c d.'),
-            [(('a', 'b', 'c', 'd'), 2), (('b', 'c', 'd', 'a'), 1), (('c', 'd', 'a', 'b'), 1), (('d', 'a', 'b', 'c'), 1)]
+            [(('a', 'b', 'c', 'd'), 2),
+             (('b', 'c', 'd', 'a'), 1),
+             (('c', 'd', 'a', 'b'), 1),
+             (('d', 'a', 'b', 'c'), 1)]
         )
         
 

@@ -10,7 +10,6 @@ def get_sentences(text: str, abbreviations: str = ABBREVIATIONS):
         text = pattern.sub(abbr.replace('.', ''), text)
     return remove_not_sentences(re.split('(?<=[.!?])\s+', text))
 
-
 def remove_not_sentences(sentences: list):
     """ Romoving offers that are not offers from the list """
 
@@ -21,11 +20,10 @@ def remove_not_sentences(sentences: list):
             new_sentences.pop()
     return new_sentences
 
-
 def is_declarative(sentence: str):
     """ Checking checking for a declarative sentences"""
-    return sentence.endswith('.') or sentence.endswith('...')
 
+    return sentence.endswith('.') or sentence.endswith('...')
 
 def remove_not_words_and_symbols(sentences: list):
     """ Removing from sentences not words and symbols"""
@@ -33,7 +31,6 @@ def remove_not_words_and_symbols(sentences: list):
     for sent in sentences:
         new_sentences.append(re.sub(r'\b\d+\b|[^a-zA-Z0-9 ]', '', sent))
     return new_sentences
-
 
 def get_words(sentences: list):
     """ Get list of words from senteces """
