@@ -42,7 +42,7 @@ class User:
         print(self.container.list())
 
     def grep_keys(self, regex: str):
-        """ Prints the result of Conatainer grep method """
+        """ Prints the result of Container grep method """
         print(self.container.grep(regex))
 
     def save_data(self):

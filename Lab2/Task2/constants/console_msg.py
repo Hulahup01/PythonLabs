@@ -1,12 +1,12 @@
 CONSOLE_COMMANDS = {
-    "add": "add elements to the container",
-    "remove": "remove element from the container",
-    "find": "find element in the container",
-    "list": "list all elements of the container",
-    "grep": "check if element suitable for provided regEx  is present in the container",
+    "add": "add element1, element2",
+    "remove": "remove element",
+    "find": "find element1, element2",
+    "list": "list all elements",
+    "grep": "grep Regex",
     "save": "save container to the file",
     "load": "load container from the file",
-    "switch": "switch to another user",
+    "switch": "switch USER_NAME",
     "exit": "exit the console"
 }
 
@@ -16,5 +16,5 @@ EXIT_PROMPT = "Save {}'s data before exiting? [y][n]: "
 
 CONSOLE_HELP = "\n-==All commands==-\n"
 for command, description in CONSOLE_COMMANDS.items():
-    CONSOLE_HELP += f"{command}: {description}\n"
+    CONSOLE_HELP += f"- {command}: {description}\n"
 CONSOLE_HELP += "--===============--\n"

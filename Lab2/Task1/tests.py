@@ -19,7 +19,7 @@ class TestAmountOfSentences(unittest.TestCase):
 
     def test_one_sentence_many_words(self):
         self.assertEqual(get_amount_of_sentences(
-            "Something wr1te th3re 3 tms. blabla"), 1)
+            "Something wr1te th3re 3 tmsg. blabla"), 1)
 
     def test_many_sentences_many_words(self):
         self.assertEqual(get_amount_of_sentences(
@@ -39,7 +39,7 @@ class TestCountNonDeclarative(unittest.TestCase):
         self.assertEqual(get_amount_of_nondecl_sentences("a...!?? ----!!?? a b!? c..!"), 3)
 
     def test_many_sentences_many_words(self):
-        self.assertEqual(get_amount_of_nondecl_sentences("shibidibob, yes, yes! 2134 ! ; ... dob! dob! dob...",), 3)
+        self.assertEqual(get_amount_of_nondecl_sentences("shibidibob, yes, yes! 2134 ! ; ... dob! dob! dob...", ), 3)
 
 
 class TestAverageSentenceLength(unittest.TestCase):
@@ -91,7 +91,7 @@ class TestTopKNGrams(unittest.TestCase):
              (('c', 'd', 'a', 'b'), 1),
              (('d', 'a', 'b', 'c'), 1)]
         )
-        
+
 
 if __name__ == "__main__":
-  unittest.main()
+    unittest.main()

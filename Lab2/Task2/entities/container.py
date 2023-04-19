@@ -23,7 +23,7 @@ class Container:
     def add(self, *keys: tuple):
         """ Adds new key(s) to the storage """
         self.data.update(keys)
-        
+
     def remove(self, key):
         """ Removes key from the storage """
         self.data.discard(key)
@@ -31,20 +31,20 @@ class Container:
     def find(self, *keys: tuple):
         """ Returns key(s) if key(s) is present in the storage """
         return [key for key in keys if key in self.data]
-    
+
     def list(self):
         """ Returns list of elements """
         return list(self.data)
-    
+
     def grep(self, regex: str):
         """ Uses regular expressions to find elements in storage """
         try:
-            return [element 
+            return [element
                     for element in self.data
-                      if re.findall(regex, element)]
+                    if re.findall(regex, element)]
         except re.error:
             return []
-    
+
     def save(self, source: str):
         """ Saves data to the file with the given path """
         path = os.path.join(self.SAVE_PATH, f"{source}.pkl")
@@ -70,4 +70,4 @@ class Container:
         if switch:
             self.data = new_data
         else:
-            self.data.update(new_data)  
+            self.data.update(new_data)

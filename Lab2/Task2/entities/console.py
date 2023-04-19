@@ -1,8 +1,8 @@
 import sys
 
 from constants.console_msg import (CONSOLE_HELP, SAVE_PROMPT, EXIT_PROMPT)
-from entities.user import User
-from entities.validator import Validator
+from .user import User
+from .validator import Validator
 
 
 class Console:

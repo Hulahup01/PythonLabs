@@ -5,8 +5,8 @@ from constants.console_msg import CONSOLE_COMMANDS
 
 class Validator:
 
-    @classmethod
-    def validate_command(cls, input_line: str):
+    @staticmethod
+    def validate_command(input_line: str):
         """ Check if the command is in input string """
         try:
             possible_command = input_line.split()[0]
@@ -18,8 +18,8 @@ class Validator:
         else:
             return f"{possible_command}: command not found"
 
-    @classmethod
-    def get_username(cls):
+    @staticmethod
+    def get_username():
         """ Get username from input string """
         while True:
             username = input("Enter your username: ")
@@ -31,8 +31,8 @@ class Validator:
                 print("Username must be at least 3 characters"
                       " long and contain only numbers and/or latin letters")
 
-    @classmethod
-    def validate_username(cls, username: str):
+    @staticmethod
+    def validate_username(username: str):
         username = username.strip()
 
         match = re.match(r'^[a-zA-Z0-9]{3,}$', username)
@@ -41,8 +41,8 @@ class Validator:
         else:
             return False
 
-    @classmethod
-    def validate_args(cls, input_line: str, grep: bool = False):
+    @staticmethod
+    def validate_args(input_line: str, grep: bool = False):
         """ Get args from input string """
         possible_args = input_line.split(maxsplit=1)
 
@@ -61,8 +61,8 @@ class Validator:
 
         return tuple(args)
 
-    @classmethod
-    def get_choice(cls, prompt):
+    @staticmethod
+    def get_choice(prompt):
         while True:
             choice = input(prompt)
             if choice == 'n' or choice == 'y':

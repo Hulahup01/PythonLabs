@@ -1,5 +1,10 @@
 from entities.console import Console
 
 
-console = Console()
-console.start_console()
+def main():
+    console = Console()
+    console.start_console()
+
+
+if __name__ == "__main__":
+    main()
