@@ -7,5 +7,10 @@ def main():
     print(get_statistics(text))
 
 
+def func(*args: tuple):
+    print(args)
+
 if __name__ == "__main__":
     main()
+
+

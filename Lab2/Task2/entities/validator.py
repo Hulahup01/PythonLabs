@@ -1,6 +1,9 @@
 import re
 
-from constants.console_msg import CONSOLE_COMMANDS
+from Lab2.Task2.constants.console_msg import CONSOLE_COMMANDS
+
+
+# from constants.console_msg import CONSOLE_COMMANDS
 
 
 class Validator:

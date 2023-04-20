@@ -8,7 +8,7 @@ from .validator import Validator
 class Console:
 
     def __init__(self):
-        self.__user: User | None = None
+        self.__user = None
         self.__prompt = None
 
         print(CONSOLE_HELP)
