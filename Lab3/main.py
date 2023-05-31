@@ -1,16 +1,16 @@
-# This is a sample Python script.
+from src.encoder.encoder import Encoder, Decoder
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+class A:
+    a = 1
+
+    @property
+    def get_a(self):
+        return self.a
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    func = lambda val: val * val
+    print(func(2))
+    ser = Encoder.encode(func)
+    des = Decoder.decode(ser)
+    print(des(2))
