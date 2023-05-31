@@ -1,6 +1,6 @@
 import sys
 
-from .serializer_factory import SerializerFactory
+from serializer_factory import SerializerFactory
 
 
 def main():
