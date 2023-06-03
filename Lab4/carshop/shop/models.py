@@ -30,7 +30,7 @@ class ProductInstance(models.Model):
                               default='a', help_text='Product availability')
 
     class Meta:
-        ordering = ['price']
+        ordering = ['price', 'product']
 
     def __str__(self):
         return f'{self.id} ({self.product.name})'
@@ -55,6 +55,10 @@ class Supplier(models.Model):
     def __str__(self):
         return self.name
 
+    def display_products(self):
+        return ', '.join(product.name for product in self.products.all()[:3])
+    display_products.short_description = 'Products'
+
 
 class Order(models.Model):
     quantity = models.PositiveIntegerField()
@@ -66,7 +70,7 @@ class Order(models.Model):
         ordering = ['quantity']
 
     def __str__(self):
-        return f"Ordered on {self.date_of_import} - {self.quantity} units"
+        return f"'{self.product}' ord: {self.date_of_import} - {self.quantity} units"
 
     def get_absolute_url(self):
         return reverse('order-detail', args=[str(self.id)])
