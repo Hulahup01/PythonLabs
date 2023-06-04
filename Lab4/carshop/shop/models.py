@@ -1,6 +1,14 @@
 from django.db import models
 from django.urls import reverse
+#from django.contrib.auth.models import AbstractUser
 import uuid
+
+
+# class Stuff(AbstractUser):
+#     bio = models.TextField(
+#         'Biography',
+#         blank=True,
+#     )
 
 
 class Product(models.Model):
@@ -66,6 +74,7 @@ class Supplier(models.Model):
 class Order(models.Model):
     quantity = models.PositiveIntegerField()
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.SET_NULL, null=True)
     supplier = models.ForeignKey(Supplier, on_delete=models.SET_NULL, null=True)
     date_of_import = models.DateField(null=True, blank=True)
     unit_price = models.DecimalField(max_digits=8, decimal_places=2)

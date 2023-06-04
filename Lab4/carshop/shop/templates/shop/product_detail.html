@@ -1,12 +1,12 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>{{ product.name }}</h1>
+  <h1 style="font-size: 50px; margin-left: 30px;">{{ product.name }}</h1>
 
-  <p><strong>Vendor code: {{ product.vendor_code }}</strong></p>
+  <p style="font-size: 18px; margin-left: 35px;"><strong>Vendor code: {{ product.vendor_code }}</strong></p>
 
 
-  <div style="margin-left:20px;margin-top:20px">
+  <div style="margin-left:50px;margin-top:20px">
     <h4>All Products</h4>
 
     {% for copy in product.productinstance_set.all %}

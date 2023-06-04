@@ -26,11 +26,11 @@
               {% if user.is_authenticated %}
                 <li>{{ user.get_username }}</li>
                 <button type="button" class="btn btn-outline-primary me-2"
-                        onclick="window.location.href='{% url 'logout'%}?next={{request.path}}'">Logout</button>
+                        onclick="window.location.href='{% url 'logout'%}?next={{request.path}}'">Sign out</button>
               {% else %}
                 <button type="button" class="btn btn-outline-primary me-2"
-                        onclick="window.location.href='{% url 'login' %}?next={{request.path}}'">Login</button>
-                <button type="button" class="btn btn-primary" onclick="window.location.href='{% url 'login' %}'">Sign-up</button>
+                        onclick="window.location.href='{% url 'login' %}?next={{request.path}}'">Sign in</button>
+                <button type="button" class="btn btn-primary" onclick="window.location.href='{% url 'signup' %}'">Sign up</button>
               {% endif %}
 
 

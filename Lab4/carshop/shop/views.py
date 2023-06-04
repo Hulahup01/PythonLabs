@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from .models import Order, Product, ProductInstance, Manufacturer, Supplier
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect
+from .forms import SignupForm
 
 
 def index(request):
@@ -25,7 +28,21 @@ class ProductListView(generic.ListView):
     paginate_by = 10
 
 
-class ProductDetailView(generic.DetailView):
+class ProductDetailView(LoginRequiredMixin, generic.DetailView):
+    login_url = 'login'
     model = Product
 
 
+def signup(request):
+    form = SignupForm()
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+            return redirect('login')
+    else:
+        form = SignupForm()
+
+    context = {'form': form}
+    return render(request, 'registration/signup.html', context,)
