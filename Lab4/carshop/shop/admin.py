@@ -4,7 +4,9 @@ from .models import Order, Product, ProductInstance, Manufacturer, Supplier
 
 @admin.register(Manufacturer)
 class ManufacturerAdmin(admin.ModelAdmin):
-    pass
+    def save_model(self, request, obj, form, change):
+        print("SAFKGKWEKGNEKG::AGAGKLAE:MGA:K")
+        obj.save()
 
 
 @admin.register(Order)
@@ -24,11 +26,11 @@ class ProductInstanceInline(admin.TabularInline):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'vendor_code', 'manufacturer')
+    list_display = ('name', 'vendor_code')
     inlines = [ProductInstanceInline]
 
 
 @admin.register(ProductInstance)
 class ProductInstanceAdmin(admin.ModelAdmin):
-    list_display = ('id', 'product', 'status', 'price', 'date_of_purchase')
+    list_display = ('id', 'quantity', 'product', 'manufacturer', 'status', 'price')
     list_filter = ('status', 'price')

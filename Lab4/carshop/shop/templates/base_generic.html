@@ -10,6 +10,7 @@
 </head>
 <body>
     <div class="container">
+
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
           <div class="col-md-3 mb-2 mb-md-0"></div>
 
@@ -22,8 +23,16 @@
           </ul>
 
           <div class="col-md-3 text-end">
-              <button type="button" class="btn btn-outline-primary me-2" onclick="window.location.href='{% url 'login' %}'">Login</button>
-              <button type="button" class="btn btn-primary" onclick="window.location.href='{% url 'login' %}'">Sign-up</button>
+              {% if user.is_authenticated %}
+                <li>{{ user.get_username }}</li>
+                <button type="button" class="btn btn-outline-primary me-2"
+                        onclick="window.location.href='{% url 'logout'%}?next={{request.path}}'">Logout</button>
+              {% else %}
+                <button type="button" class="btn btn-outline-primary me-2"
+                        onclick="window.location.href='{% url 'login' %}?next={{request.path}}'">Login</button>
+                <button type="button" class="btn btn-primary" onclick="window.location.href='{% url 'login' %}'">Sign-up</button>
+              {% endif %}
+
 
           </div>
         </header>

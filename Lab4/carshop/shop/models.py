@@ -6,7 +6,6 @@ import uuid
 class Product(models.Model):
     name = models.CharField(max_length=100)
     vendor_code = models.CharField(max_length=10)
-    manufacturer = models.ForeignKey('Manufacturer', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.name
@@ -17,9 +16,10 @@ class Product(models.Model):
 
 class ProductInstance(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID for this product")
-    product = models.ForeignKey('Product', on_delete=models.SET_NULL, null=True)
+    quantity = models.PositiveIntegerField(default=0)
+    product = models.ForeignKey('Product', on_delete=models.RESTRICT, null=True)
+    manufacturer = models.ForeignKey('Manufacturer', on_delete=models.SET_NULL, null=True)
     price = models.IntegerField(default=0)
-    date_of_purchase = models.DateField(null=True, blank=True)
 
     AVAILABLE_STATUS = (
         ('a', 'Available'),
@@ -34,6 +34,9 @@ class ProductInstance(models.Model):
 
     def __str__(self):
         return f'{self.id} ({self.product.name})'
+
+    def get_absolute_url(self):
+        return reverse('product_instance-detail', args=[str(self.id)])
 
 
 class Manufacturer(models.Model):
@@ -62,7 +65,8 @@ class Supplier(models.Model):
 
 class Order(models.Model):
     quantity = models.PositiveIntegerField()
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    supplier = models.ForeignKey(Supplier, on_delete=models.SET_NULL, null=True)
     date_of_import = models.DateField(null=True, blank=True)
     unit_price = models.DecimalField(max_digits=8, decimal_places=2)
 
