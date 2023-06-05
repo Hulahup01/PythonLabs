@@ -1,14 +1,7 @@
 from django.db import models
 from django.urls import reverse
-#from django.contrib.auth.models import AbstractUser
+
 import uuid
-
-
-# class Stuff(AbstractUser):
-#     bio = models.TextField(
-#         'Biography',
-#         blank=True,
-#     )
 
 
 class Product(models.Model):

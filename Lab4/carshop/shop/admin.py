@@ -1,8 +1,6 @@
 from django.contrib import admin
 from .models import Order, Product, ProductInstance, Manufacturer, Supplier
 
-#admin.site.register(Stuff)
-
 
 @admin.register(Manufacturer)
 class ManufacturerAdmin(admin.ModelAdmin):
@@ -15,9 +13,7 @@ class OrderAdmin(admin.ModelAdmin):
     fields = [('product', 'manufacturer'), ('quantity', 'unit_price'), 'supplier', 'date_of_import']
 
     def save_model(self, request, obj, form, change):
-        product = obj.product
-        manufacturer = obj.manufacturer
-        product_instance = ProductInstance.objects.filter(product=product, manufacturer=manufacturer)
+        product_instance = ProductInstance.objects.filter(product=obj.product, manufacturer=obj.manufacturer)
         if product_instance.exists() and len(product_instance) == 1:
             product_instance = product_instance[0]
             product_instance.quantity += obj.quantity
@@ -25,7 +21,11 @@ class OrderAdmin(admin.ModelAdmin):
                 product_instance.status = 'a'
             product_instance.save()
         else:
-            raise Exception
+            new_product_instance = ProductInstance(product=obj.product,
+                                                   manufacturer=obj.manufacturer,
+                                                   quantity=obj.quantity,
+                                                   price=obj.unit_price)
+            new_product_instance.save()
         obj.save()
 
 

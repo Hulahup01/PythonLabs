@@ -28,6 +28,12 @@ class ProductListView(generic.ListView):
     paginate_by = 10
 
 
+class OrdersListView(LoginRequiredMixin, generic.ListView):
+    login_url = 'login'
+    model = Order
+    paginate_by = 4
+
+
 class ProductDetailView(LoginRequiredMixin, generic.DetailView):
     login_url = 'login'
     model = Product

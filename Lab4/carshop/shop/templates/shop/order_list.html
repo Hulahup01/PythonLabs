@@ -1,0 +1,26 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1 style="font-size: 50px; margin-left: 30px;">Orders</h1>
+
+{% if order_list %}
+<ul>
+
+    {% for order in order_list %}
+    <hr>
+    <a style="font-size: 30px;"><strong>Product: </strong> {{order.product.name}}   </a>
+    <i style="font-size: 15px;"><strong>Manufacturer: </strong> {{order.manufacturer.name}}</i>
+    <br>
+    <a style="font-size: 20px;"><strong>Supplier: </strong> {{order.supplier.name}}</a>
+    <br>
+    <a style="font-size: 20px;"><strong>Date: </strong> {{order.date_of_import}}</a>
+    <br>
+    <a style="font-size: 25px;"><strong>Quantity: </strong> {{order.quantity}}  </a>
+    <i style="font-size: 15px;"><strong>Unit price: </strong> {{order.unit_price}}</i>
+    {% endfor %}
+
+</ul>
+{% else %}
+<p>There are no products.</p>
+{% endif %}
+{% endblock %}

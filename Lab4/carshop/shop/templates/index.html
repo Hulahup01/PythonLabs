@@ -1,20 +1,21 @@
 {% extends "base_generic.html" %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/styles.css' %}" />
 {% block content %}
-<h1>Local Library Home</h1>
+<div style="text-align: center;">
+    <h1>Auto shop Home</h1>
 
-  <p>Welcome to <em>LocalLibrary</em>, a very basic Django website developed as a tutorial example on the Mozilla Developer Network.</p>
+    <p>Welcome to <em>Auto shop</em>, a company that sells spare parts for cars.</p>
 
-<h2>Dynamic content</h2>
+    <h2>Dynamic content</h2>
 
-  <p>The library has the following record counts:</p>
-  <ul>
-    <li><strong>Products:</strong> {{ num_products }}</li>
-    <li><strong>Copies:</strong> {{ num_instances }}</li>
-    <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
-    <li><strong>Manufacturers:</strong> {{ num_manuf }}</li>
-    <li><strong>Visits:</strong>{{ num_visits }}</li>
-  </ul>
+    <p>The library has the following record counts:</p>
+    <ul style="display: inline-block; text-align: left;">
+        <li><strong>Products:</strong> {{ num_products }}</li>
+        <li><strong>Copies:</strong> {{ num_instances }}</li>
+        <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
+        <li><strong>Manufacturers:</strong> {{ num_manuf }}</li>
+        <li><strong>Visits:</strong>{{ num_visits }}</li>
+    </ul>
+</div>
 
 {% endblock %}
