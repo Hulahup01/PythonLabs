@@ -1,7 +1,11 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1 style="font-size: 50px; margin-left: 30px;">{{ product.name }}</h1>
+
+  <a href="{% url 'products' %}" style="margin-left: 30px;"><--Back</a>
+
+
+  <h1 style="font-size: 50px; margin-left: 30px; margin-top: 10px;">{{ product.name }}</h1>
 
   <p style="font-size: 18px; margin-left: 35px;"><strong>Vendor code: {{ product.vendor_code }}</strong></p>
 

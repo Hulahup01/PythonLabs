@@ -2,52 +2,56 @@
 
 {% block content %}
 
-<h1>Sign up</h1>
+<h1 style="text-align: center;">Sign up</h1>
 
-<form method="post" action="{% url 'signup' %}">
-    {% csrf_token %}
+<div style="margin-left: auto; margin-right: auto; padding: 20px;">
+  <form method="post" action="{% url 'signup' %}">
+      {% csrf_token %}
 
-    <table>
+      <table style="margin-left: auto; margin-right: auto;">
+          <tr>
+              <td>{{ form.username.label_tag }}</td>
+              <td>{{ form.username }}</td>
+          </tr>
 
-        <tr>
-            <td>{{ form.username.label_tag }}</td>
-            <td>{{ form.username }}</td>
-        </tr>
+          <tr>
+              <td>{{ form.email.label_tag }}</td>
+              <td>{{ form.email }}</td>
+          </tr>
 
-        <tr>
-            <td>{{ form.email.label_tag }}</td>
-            <td>{{ form.email }}</td>
-        </tr>
+          <tr>
+              <td>{{ form.date_of_birth.label_tag }}</td>
+              <td>{{ form.date_of_birth }}</td>
+          </tr>
 
-        <tr>
-            <td>{{ form.date_birth.label_tag }}</td>
-            <td>{{ form.date_birth }}</td>
-        </tr>
+          <tr>
+              <td>{{ form.phone.label_tag }}</td>
+              <td>{{ form.phone }}</td>
+          </tr>
 
-        <tr>
-            <td>{{ form.password1.label_tag }}</td>
-            <td>{{ form.password1 }}</td>
-        </tr>
+          <tr>
+              <td>{{ form.password1.label_tag }}</td>
+              <td>{{ form.password1 }}</td>
+          </tr>
 
-        <tr>
-            <td>{{ form.password2.label_tag }}</td>
-            <td>{{ form.password2 }}</td>
-        </tr>
+          <tr>
+              <td>{{ form.password2.label_tag }}</td>
+              <td>{{ form.password2 }}</td>
+          </tr>
+      </table>
 
+      {% if form.errors or form.non_field_errors %}
+      <div class="mb-3 p-6 bg-red-100 rounded-xl">
+          {% for field in form %}
+          {{ field.errors }}
+          {% endfor %}
 
-    </table>
+          {{ form.non_field_errors }}
+      </div>
+      {% endif %}
 
-    {% if form.errors or form.non_field_errors %}
-    <div class="mb-3 p-6 bg-red-100 rounded-xl">
-        {% for field in form %}
-        {{ field.errors }}
-        {% endfor %}
-
-        {{ form.non_field_errors }}
-    </div>
-    {% endif %}
-
-    <button>Sign up</button>
-</form>
+      <button style="display: block; margin-left: auto; margin-right: auto; margin-top: 10px;">Sign up</button>
+  </form>
+</div>
 
 {% endblock content %}
